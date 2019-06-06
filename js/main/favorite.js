@@ -1,14 +1,14 @@
 var FavAction = Object.freeze({"add":0, "remove":1});
 class FavoriteEvent {
-    static eventHandlers = [];
     static addHandler(handler/*callback(type: BaseType, action: FavAction, entry: Object)*/) {
-        this.eventHandlers.push(handler);
+        FavoriteEvent.eventHandlers.push(handler);
     }
     static removeHandler(handler) {
-        let pos = this.eventHandlers.indexOf(handler);
-        if (pos != -1) this.eventHandlers.splice(pos, 1);
+        let pos = FavoriteEvent.eventHandlers.indexOf(handler);
+        if (pos != -1) FavoriteEvent.eventHandlers.splice(pos, 1);
     }
-};
+}
+FavoriteEvent.eventHandlers = [];
 
 function loadFav(what) {
     var list = localStorage.getItem("fav" + what);

@@ -15,7 +15,6 @@ const jsPath = getJsPath();
 
 function include(scriptFile) {
     $.getScript(jsPath + scriptFile).done((script, textStatus) => {
-        console.log("'" + scriptFile + "' script is now loaded.");
     }).fail((jqxhr, settings, exception) => {
         console.log("Failed loading '" + scriptFile + "' script.");
     });
