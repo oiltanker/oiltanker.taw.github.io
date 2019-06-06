@@ -38,10 +38,10 @@ const SCRIPTS_TO_CACHE = [
 
 const PAGES_TO_CACHE = [
     "index.html",
-    "pages/civilizations.html",
-	"pages/structures.html",
-	"pages/technologies.html",
-	"pages/units.html"
+    "civilizations.html",
+	"structures.html",
+	"technologies.html",
+	"units.html"
 ];
 
 self.addEventListener("activate", event => {
