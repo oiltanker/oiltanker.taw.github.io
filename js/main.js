@@ -10,10 +10,16 @@ function getJsPath() {
 const jsPath = getJsPath();
 
 function include(scriptFile) {
-    return $.getScript(jsPath + scriptFile)
-        .fail((jqxhr, settings, exception) => {
-            console.log("Failed loading '" + scriptFile + "' script.");
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            type: "GET",
+            url: jsPath + scriptFile,
+            success: () => resolve(),
+            fail: () => reject(),
+            dataType: "script",
+            cache: true
         });
+    });
 }
 
 var compoundLoad = null;
