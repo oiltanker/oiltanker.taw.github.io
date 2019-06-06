@@ -5,7 +5,7 @@ const FILES_TO_CACHE = [
     "css/normalize.css",
     "js/vendor/jquery-3.3.1.min.js",
 	"js/vendor/modernizr-3.7.1.min.js",
-	"js/main.js",
+	//"js/main.js",
 	"js/plugins.js",
 	"img/aoe2-logo.png",
 	"img/aoe2-long_notitle.png",
