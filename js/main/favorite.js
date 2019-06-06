@@ -18,29 +18,52 @@ function loadFav(what) {
     return list;
 }
 
+function getEntryById(state, data, id) {
+    var entries;
+    switch (state) {
+        case StateEnum.civs:
+            entries = data.civilizations;
+            break;
+        case StateEnum.structs:
+            entries = data.structures;
+            break;
+        case StateEnum.techs:
+            entries = data.technologies;
+            break;
+        case StateEnum.units:
+            entries = data.units;
+            break;
+        default:
+            alert("Error: Non-explore must not call 'addToFav' function.")
+            return;
+    }
+    for(let i = 0; i < entries.length; i++) {
+        if(entries[i].id == id) return entries[i];
+    }
+    return null;
+}
+
 function toggleFav(id) {
     var list = null, what = null;
-    var type = null, action = null, entry = null;
+    var type = null, action = null;
+    var entry = getEntryById(state, exploreState.data, id);
+
     switch (state) {
         case StateEnum.civs:
             what = "favCivs";
             type = BaseType.civs;
-            entry = exploreState.data.civilizations[id];
             break;
         case StateEnum.structs:
             what = "favStructs";
             type = BaseType.structs;
-            entry = exploreState.data.structures[id];
             break;
         case StateEnum.techs:
             what = "favTechs";
             type = BaseType.techs;
-            entry = exploreState.data.technologies[id];
             break;
         case StateEnum.units:
             what = "favUnits";
             type = BaseType.units;
-            entry = exploreState.data.units[id];
             break;
         default:
             alert("Error: Non-explore must not call 'addToFav' function.")
@@ -52,12 +75,10 @@ function toggleFav(id) {
 
     var elem = document.getElementById("_e" + id);
     if ((list.length == 0) || (list.indexOf(id) == -1)) {
-        console.log("Adding");
         list.push(id);
         elem.setAttribute("value", "-");
         action = FavAction.add;
     } else {
-        console.log("Removing");
         list.splice(list.indexOf(id), 1);
         elem.setAttribute("value", "+");
         action = FavAction.remove;

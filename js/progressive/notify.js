@@ -6,18 +6,15 @@ class Notify {
             return;
         } else  {
             this.enabled = true;
-            console.log("Notifications are supported.");
         }
 
         Notification.requestPermission(result => {
-            console.log("notify permition: " + result);
             if (result == "granted") {
                 this.enabled = true;
-                console.log("Notifications are NOT enabled.");
             }
             else {
                 this.enabled = false;
-                console.log("Notifications are enabled.");
+                console.log("Notifications are NOT enabled.");
             }
         });
     }

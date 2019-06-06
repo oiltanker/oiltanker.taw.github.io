@@ -1,4 +1,4 @@
-let prFunc = {"fullscreen":null, "notification":null, "vibrate":null};
+let prFunc = {"fullscreen":null, "notify":null, "vibrate":null};
 if (prConfig.useFullscreen) prFunc.fullscreen = new Fullscreen();
 if (prConfig.useNotifications) prFunc.notify = new Notify();
 
@@ -16,9 +16,13 @@ if(prFunc.fullscreen) {
     fsBtn.addEventListener("click", () => prFunc.fullscreen.goFullscreen());
 } 
 
-if(prFunc.notification) {
+if(prFunc.notify) {
     FavoriteEvent.addHandler((type, action, entry) => {
         navigator.vibrate(200);
-        prFunc.notify.notify("Entry '" + entry.name + "' is now added to your favorites.");
+        prFunc.notify.notify(
+            "Entry '" + entry.name + "' is now "
+            + (action == FavAction.add ? "added" : "removed")
+            + " to your favorites."
+        );
     });
 }
