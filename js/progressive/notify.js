@@ -10,6 +10,7 @@ class Notify {
         }
 
         Notification.requestPermission(result => {
+            console.log("notify permition: " + result);
             if (result == "granted") {
                 this.enabled = true;
                 console.log("Notifications are NOT enabled.");
