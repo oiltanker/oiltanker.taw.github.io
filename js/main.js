@@ -7,24 +7,35 @@ function getJsPath() {
         }
     }
 }
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 const jsPath = getJsPath();
 
 function include(scriptFile) {
-    $.getScript(jsPath + scriptFile).done((script, textStatus) => {
-    }).fail((jqxhr, settings, exception) => {
-        console.log("Failed loading '" + scriptFile + "' script.");
-    });
+    return $.getScript(jsPath + scriptFile)
+        .fail((jqxhr, settings, exception) => {
+            console.log("Failed loading '" + scriptFile + "' script.");
+        });
 }
 
-include("main/types.js")
-include("main/globals.js")
-include("main/favorite.js")
-include("main/parse.js")
-include("main/display.js")
-include("main/init.js")
+var compoundLoad = null;
+$.when(
+    include("base.js"),
+    include("progressive.js"),
 
-include("progressive.js")
+    $.Deferred(function( deferred ){
+        $( deferred.resolve );
+    })
+).done(() => {
+    compoundLoad = () => {
+        base_onLoad();
+        progressive_onLoad();
+    };
+});
+
+function onLoad() {
+    var scriptWait = setInterval(() => {
+        if(compoundLoad) {
+            clearInterval(scriptWait);
+            compoundLoad();
+        }
+    }, 100);
+}

@@ -1,6 +1,6 @@
 // MAIN LOADING
 
-function onLoad() {
+function base_onLoad() {
     var title = document.title;
     switch (title) {
         case "AoE2 Game Querry":
