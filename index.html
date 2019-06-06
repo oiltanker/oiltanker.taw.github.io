@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+    <head>
+        <meta charset="utf-8">
+        <title>AoE2 Game Querry</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <link rel="shortcut icon" href="icon.png" />
+		<link rel="manifest" href="manifest.json">
+        <!-- Place favicon.ico in the root directory -->
+        <link href='https://fonts.googleapis.com/css?family=Montaga' rel='stylesheet'>
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "WebSite",
+            "name": "AoE2 Game Querry",
+            "url": "http://index.html"
+        }
+        </script>
+
+        <meta name="theme-color" content="#fafafa">
+    </head>
+
+    <body onload="onLoad()">
+        <!--[if IE]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div id="composed-top">
+            <header>
+                <div>
+                    <img id="top-logo" src="img/aoe2-logo.png" height="0"/>
+                    <div id="top-title"><h1>Game Querry for Age of Empires II</h1></div>
+                </div>
+                <hr/>
+                <nav>
+                    <div class="explore-button-inactive">HOME</div>
+                    <a href="pages/civilizations.html">
+                        <div class="explore-button">Civilizations</div>
+                    </a>
+                    <a href="pages/units.html">
+                        <div class="explore-button">Units</div>
+                    </a>
+                    <a href="pages/structures.html">
+                        <div class="explore-button">Structures</div>
+                    </a>
+                    <a href="pages/technologies.html">
+                        <div class="explore-button">Technologies</div>
+                    </a>
+                </nav>
+            </header>
+        </div>
+        <article style="height: 100%">
+            <section>
+                <h1>Favorites</h1>
+                <div id="favorite_content"></div>
+            </section>
+        </article>
+        <footer>
+            <div>
+                <h4>API</h4>
+                <p><a href="https://age-of-empires-2-api.herokuapp.com/docs/#/">Age of Empires 2 API</a></p>
+            </div>
+            <address>
+                <h4>Author</h4>
+                <p><a href="mailto:dmitry.spils@gmail.com">Dmitry Prutkov</a></p>
+            </address>
+        </footer>
+
+        <script src="js/vendor/modernizr-3.7.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+		<script src="js/register.js"></script>
+    </body>
+
+</html>

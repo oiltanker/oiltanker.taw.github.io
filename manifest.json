@@ -1,0 +1,32 @@
+{
+    "short_name": "AOE2GameQuerry",
+    "name": "Game Querry for Age of Empires II",
+    "icons": [
+    {
+        "src": "/favicons/icon_194.png",
+        "sizes": "194x194",
+        "type": "image/png"
+    },
+    {
+        "src": "/favicons/icon_96.png",
+        "sizes": "96x96",
+        "type": "image/png"
+    },
+    {
+        "src": "/favicons/icon_32.png",
+        "sizes": "32x32",
+        "type": "image/png"
+    },
+    {
+        "src": "/favicons/icon_16.png",
+        "sizes": "16x16",
+        "type": "image/png"
+    }
+    ],
+    "start_url": "index.html",
+    "background_color": "#77aaff",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#5599ff",
+    "orientation": "portrait"
+}
