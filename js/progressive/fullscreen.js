@@ -21,7 +21,6 @@ class Fullscreen {
 
         if (document[this.prefix + 'Enabled']) {
             this.fsEnabled = true;
-            console.log("Fullscreen is supported.");
 
             this.onFullscreenChange = () => {
                 var fsElem;
