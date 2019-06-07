@@ -16,6 +16,7 @@ const FILES_TO_CACHE = [
     "icon.png",
 
     "manifest.json",
+    "service-worker.js",
 
     "js/vendor/jquery-3.3.1.min.js",
 	"js/vendor/modernizr-3.7.1.min.js",
