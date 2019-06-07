@@ -1,3 +1,4 @@
+var fsButtonState = false;
 function progressive_onLoad() {
     let prFunc = {"fullscreen":null, "notify":null, "vibrate":null};
     if (prConfig.useFullscreen) prFunc.fullscreen = new Fullscreen();
@@ -10,11 +11,15 @@ function progressive_onLoad() {
         document.body.appendChild(fsBtn);
     
         prFunc.fullscreen.addOnFullscreenHandler(started => {
+            fsButtonState = started;
+
             document.getElementById("fs_img")
                 .setAttribute(  "src", started ? "img/exit_fullscreen.png" : "img/fullscreen.png");
-            fsBtn.addEventListener("click", () => prFunc.fullscreen.exitFullScreen());
         });
-        fsBtn.addEventListener("click", () => prFunc.fullscreen.goFullscreen());
+        fsBtn.addEventListener("click", () => {
+            if (!fsButtonState) prFunc.fullscreen.goFullscreen();
+            else prFunc.fullscreen.exitFullScreen();
+        });
     } 
     
     if(prFunc.notify) {
