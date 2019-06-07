@@ -9,11 +9,11 @@ const filesToCache = [
     "img/exit_fullscreen.png",
     "img/fullscreen.png",
 
-	// "favicon/icon_194.png",
-	// "favicon/icon_96.png",
-	// "favicon/icon_32.png",
-	// "favicon/icon_16.png",
-    // "icon.png",
+	"favicons/icon_194.png",
+	"favicons/icon_96.png",
+	"favicons/icon_32.png",
+	"favicons/icon_16.png",
+    "icon.png",
 
     "manifest.json",
 
