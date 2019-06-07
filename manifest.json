@@ -26,7 +26,7 @@
     "start_url": "https://oiltanker.github.io/oiltanker.taw.github.io",
     "background_color": "#77aaff",
     "display": "standalone",
-    "scope": "/",
+    "scope": "https://oiltanker.github.io/oiltanker.taw.github.io",
     "theme_color": "#5599ff",
     "orientation": "portrait"
 }

@@ -6,13 +6,13 @@ const FILES_TO_CACHE = [
 
 	"img/aoe2-logo.png",
     "img/aoe2-long_notitle.png",
-    
+
 	"favicon/icon_194.png",
 	"favicon/icon_96.png",
 	"favicon/icon_32.png",
 	"favicon/icon_16.png",
     "icon.png",
-    
+
 	"site.webmanifest",
     "browserconfig.xml",
     "manifest.json",
@@ -49,8 +49,8 @@ const PAGES_TO_CACHE = [
 self.addEventListener("activate", event => {
     const cacheWhitelist = [CACHE_NAME];
     event.waitUntil(caches.keys()
-        .then(function (keyList) {
-            return Promise.all(keyList.map(function (key) {
+        .then((keyList) => {
+            return Promise.all(keyList.map((key) => {
                 if (!cacheWhitelist.includes(key)) {
                     return caches.delete(key);
                 }
@@ -59,15 +59,15 @@ self.addEventListener("activate", event => {
     );
 });
 
-self.addEventListener("install", function (event) {
+self.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(function (cache) {
+            .then((cache) => {
                 fetch("manifest.json")
-                    .then(function (response) {
+                    .then((response) => {
                         response.json()
                     })
-                    .then(function (assets) {
+                    .then((assets) => {
                         cache.addAll(FILES_TO_CACHE);
                         cache.addAll(PAGES_TO_CACHE);
                     });
@@ -75,9 +75,9 @@ self.addEventListener("install", function (event) {
     );
 });
 
-self.addEventListener("fetch", function (event) {
+self.addEventListener("fetch", (event) => {
     event.respondWith(
-        caches.match(event.request).then(function (response) {
+        caches.match(event.request).then((response) => {
             return response || fetch(event.request);
         })
     );
