@@ -55,7 +55,7 @@ self.addEventListener("activate", event => {
                     return caches.delete(key);
                 }
             }))
-        }).catch(error => {
+        }).catch((error) => {
             console.log("error on \"activate\": " + error);
         })
     );
@@ -68,16 +68,16 @@ self.addEventListener("install", (event) => {
                 fetch("manifest.json")
                     .then((response) => {
                         response.json()
-                    }).catch(error => {
+                    }).catch((error) => {
                         console.log("error on installing manifest: " + error);
                     })
                     .then((assets) => {
                         cache.addAll(FILES_TO_CACHE);
                         cache.addAll(PAGES_TO_CACHE);
-                    }).catch(error => {
+                    }).catch((error) => {
                         console.log("error on caching: " + error);
                     });
-            }).catch(error => {
+            }).catch((error) => {
                 console.log("error on \"install\": " + error);
             })
     );
@@ -87,7 +87,7 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
         caches.match(event.request).then((response) => {
             return response || fetch(event.request);
-        }).catch(error => {
+        }).catch((error) => {
             console.log("error on \"fetch\": " + error);
         })
     );
