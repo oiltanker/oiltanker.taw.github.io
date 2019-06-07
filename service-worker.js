@@ -3,19 +3,20 @@ const CACHE_NAME = "AOE2GameQuerry_cache";
 const FILES_TO_CACHE = [
     "css/main.css",
     "css/normalize.css",
+
 	"img/aoe2-logo.png",
-	"img/aoe2-long_notitle.png",
+    "img/aoe2-long_notitle.png",
+    
 	"favicon/icon_194.png",
 	"favicon/icon_96.png",
 	"favicon/icon_32.png",
 	"favicon/icon_16.png",
-	"404.html",
-	"icon.png",
+    "icon.png",
+    
 	"site.webmanifest",
-	"browserconfig.xml"
-];
+    "browserconfig.xml",
+    "manifest.json",
 
-const SCRIPTS_TO_CACHE = [
     "js/vendor/jquery-3.3.1.min.js",
 	"js/vendor/modernizr-3.7.1.min.js",
     "js/register.js",
@@ -33,6 +34,7 @@ const SCRIPTS_TO_CACHE = [
     "js/progressive/fullscreen.js",
     "js/progressive/init.js",
     "js/progressive/notify.js",
+
     "service-worker.js"
 ];
 
@@ -67,7 +69,6 @@ self.addEventListener("install", function (event) {
                     })
                     .then(function (assets) {
                         cache.addAll(FILES_TO_CACHE);
-                        cache.addAll(SCRIPTS_TO_CACHE);
                         cache.addAll(PAGES_TO_CACHE);
                     });
             })
