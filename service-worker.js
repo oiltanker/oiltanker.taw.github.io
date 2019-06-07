@@ -1,6 +1,6 @@
-const cacheName = "aoe2gq_cache";
+const CACHE_NAME = "aoe2gq_cache";
 
-const filesToCache = [
+const FILES_TO_CACHE = [
     "css/main.css",
     "css/normalize.css",
 
@@ -38,7 +38,7 @@ const filesToCache = [
     "js/progressive/notify.js"
 ];
 
-const pagesToCache = [
+const PAGES_TO_CACHE = [
     "index.html",
     "civilizations.html",
 	"structures.html",
@@ -46,31 +46,39 @@ const pagesToCache = [
 	"units.html"
 ];
 
-self.addEventListener("install", (event) => {
-    event.waitUntil(caches.open(cacheName).then((cache) => {
-        fetch("manifest.json").then((response) => {
-            response.json()
-        })
-        .then((assets) => {
-            cache.addAll(filesToCache);
-            cache.addAll(pagesToCache);
-        });
-    }));
-});
-
-self.addEventListener("fetch", (event) => {
-    event.respondWith(caches.match(event.request).then((response) => {
-        return response || fetch(event.request);
-    }));
-});
-
 self.addEventListener("activate", event => {
-    const cacheWhitelist = [cacheName];
-    event.waitUntil(caches.keys().then((keyList) => {
-        return Promise.all(keyList.map((key) => {
-            if (!cacheWhitelist.includes(key)) {
-                return caches.delete(key);
-            }
-        }))
-    }));
+    const cacheWhitelist = [CACHE_NAME];
+    event.waitUntil(caches.keys()
+        .then(function (keyList) {
+            return Promise.all(keyList.map(function (key) {
+                if (!cacheWhitelist.includes(key)) {
+                    return caches.delete(key);
+                }
+            }))
+        })
+    );
+});
+
+self.addEventListener("install", function (event) {
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(function (cache) {
+                fetch("manifest.json")
+                    .then(function (response) {
+                        response.json()
+                    })
+                    .then(function (assets) {
+                        cache.addAll(FILES_TO_CACHE);
+                        cache.addAll(PAGES_TO_CACHE);
+                    });
+            })
+    );
+});
+
+self.addEventListener("fetch", function (event) {
+    event.respondWith(
+        caches.match(event.request).then(function (response) {
+            return response || fetch(event.request);
+        })
+    );
 });
