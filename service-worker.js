@@ -13,7 +13,6 @@ const FILES_TO_CACHE = [
 	"favicon/icon_16.png",
     "icon.png",
 
-	"site.webmanifest",
     "browserconfig.xml",
     "manifest.json",
 
