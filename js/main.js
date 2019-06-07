@@ -1,47 +1,14 @@
-function getJsPath() {
-    const scripts = document.getElementsByTagName("script");
-    for(let i = 0; i < scripts.length; i++) {
-        let pos = scripts[i].src.indexOf("main.js");
-        if (pos != -1) {
-            return scripts[i].src.substring(0, pos);
-        }
-    }
-}
-const jsPath = getJsPath();
-
 function include(scriptFile) {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            type: "GET",
-            url: jsPath + scriptFile,
-            success: () => resolve(),
-            fail: () => reject(),
-            dataType: "script",
-            cache: true
-        });
-    });
+    var script = document.createElement('script');
+    script.setAttribute("type","text/javascript");
+    script.setAttribute("src", "js/" + scriptFile);
+    document.getElementsByTagName("head")[0].appendChild(script);
 }
 
-var compoundLoad = null;
-$.when(
-    include("base.js"),
-    include("progressive.js"),
-
-    $.Deferred(function( deferred ){
-        $( deferred.resolve );
-    })
-).done(() => {
-    compoundLoad = () => {
-        base_onLoad();
-        progressive_onLoad();
-    };
-});
+include("base.js");
+include("progressive.js")
 
 function onLoad() {
-    var scriptWait = setInterval(() => {
-        if(compoundLoad) {
-            clearInterval(scriptWait);
-            compoundLoad();
-        }
-    }, 100);
+    base_onLoad();
+    progressive_onLoad();
 }
