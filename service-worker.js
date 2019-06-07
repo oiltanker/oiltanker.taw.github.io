@@ -55,6 +55,8 @@ self.addEventListener("activate", event => {
                     return caches.delete(key);
                 }
             }))
+        }).catch(error => {
+            console.log("error on \"activate\": " + error);
         })
     );
 });
@@ -71,6 +73,8 @@ self.addEventListener("install", (event) => {
                         cache.addAll(FILES_TO_CACHE);
                         cache.addAll(PAGES_TO_CACHE);
                     });
+            }).catch(error => {
+                console.log("error on \"activate\": " + error);
             })
     );
 });
@@ -79,6 +83,8 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
         caches.match(event.request).then((response) => {
             return response || fetch(event.request);
+        }).catch(error => {
+            console.log("error on \"activate\": " + error);
         })
     );
 });
