@@ -1,19 +1,19 @@
 const cacheName = "aoe2gq_cache";
 
 const filesToCache = [
-    "css/main.css",
-    "css/normalize.css",
+    // "css/main.css",
+    // "css/normalize.css",
 
-	"img/aoe2-logo.png",
-    "img/aoe2-long_notitle.png",
-    "img/exit_fullscreen.png",
-    "img/fullscreen.png",
+	// "img/aoe2-logo.png",
+    // "img/aoe2-long_notitle.png",
+    // "img/exit_fullscreen.png",
+    // "img/fullscreen.png",
 
-	"favicon/icon_194.png",
-	"favicon/icon_96.png",
-	"favicon/icon_32.png",
-	"favicon/icon_16.png",
-    "icon.png",
+	// "favicon/icon_194.png",
+	// "favicon/icon_96.png",
+	// "favicon/icon_32.png",
+	// "favicon/icon_16.png",
+    // "icon.png",
 
     "manifest.json",
 
