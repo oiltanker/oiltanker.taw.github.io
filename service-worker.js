@@ -6,6 +6,8 @@ const FILES_TO_CACHE = [
 
 	"img/aoe2-logo.png",
     "img/aoe2-long_notitle.png",
+    "img/exit_fullscreen.png",
+    "img/fullscreen.png",
 
 	"favicon/icon_194.png",
 	"favicon/icon_96.png",
@@ -13,7 +15,6 @@ const FILES_TO_CACHE = [
 	"favicon/icon_16.png",
     "icon.png",
 
-    "browserconfig.xml",
     "manifest.json",
 
     "js/vendor/jquery-3.3.1.min.js",
@@ -22,19 +23,19 @@ const FILES_TO_CACHE = [
     "js/plugins.js",
     "js/main.js",
     "js/base.js",
+    "js/progressive.js",
+
     "js/base/display.js",
     "js/base/favorite.js",
     "js/base/globals.js",
     "js/base/init.js",
     "js/base/parse.js",
     "js/base/types.js",
-    "js/progressive.js",
+
     "js/progressive/config.js",
     "js/progressive/fullscreen.js",
     "js/progressive/init.js",
-    "js/progressive/notify.js",
-
-    "service-worker.js"
+    "js/progressive/notify.js"
 ];
 
 const PAGES_TO_CACHE = [
