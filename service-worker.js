@@ -1,6 +1,6 @@
-const CACHE_NAME = "AOE2GameQuerry_cache";
+const cacheName = "AOE2GameQuerry_cache";
 
-const FILES_TO_CACHE = [
+const filesToCache = [
     "css/main.css",
     "css/normalize.css",
 
@@ -38,7 +38,7 @@ const FILES_TO_CACHE = [
     "js/progressive/notify.js"
 ];
 
-const PAGES_TO_CACHE = [
+const pagesToCache = [
     "index.html",
     "civilizations.html",
 	"structures.html",
@@ -46,49 +46,31 @@ const PAGES_TO_CACHE = [
 	"units.html"
 ];
 
-self.addEventListener("activate", event => {
-    const cacheWhitelist = [CACHE_NAME];
-    event.waitUntil(caches.keys()
-        .then((keyList) => {
-            return Promise.all(keyList.map((key) => {
-                if (!cacheWhitelist.includes(key)) {
-                    return caches.delete(key);
-                }
-            }))
-        }).catch((error) => {
-            console.log("error on \"activate\": " + error);
-        })
-    );
-});
-
 self.addEventListener("install", (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then((cache) => {
-                fetch("manifest.json")
-                    .then((response) => {
-                        response.json()
-                    }).catch((error) => {
-                        console.log("error on installing manifest: " + error);
-                    })
-                    .then((assets) => {
-                        cache.addAll(FILES_TO_CACHE);
-                        cache.addAll(PAGES_TO_CACHE);
-                    }).catch((error) => {
-                        console.log("error on caching: " + error);
-                    });
-            }).catch((error) => {
-                console.log("error on \"install\": " + error);
-            })
-    );
+    event.waitUntil(caches.open(cacheName).then((cache) => {
+        fetch("manifest.json").then((response) => {
+            response.json()
+        })
+        .then((assets) => {
+            cache.addAll(filesToCache);
+            cache.addAll(pagesToCache);
+        });
+    }));
 });
 
 self.addEventListener("fetch", (event) => {
-    event.respondWith(
-        caches.match(event.request).then((response) => {
-            return response || fetch(event.request);
-        }).catch((error) => {
-            console.log("error on \"fetch\": " + error);
-        })
-    );
+    event.respondWith(caches.match(event.request).then((response) => {
+        return response || fetch(event.request);
+    }));
+});
+
+self.addEventListener("activate", event => {
+    const cacheWhitelist = [cacheName];
+    event.waitUntil(caches.keys().then((keyList) => {
+        return Promise.all(keyList.map((key) => {
+            if (!cacheWhitelist.includes(key)) {
+                return caches.delete(key);
+            }
+        }))
+    }));
 });
