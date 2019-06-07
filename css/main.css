@@ -7,7 +7,7 @@
  * Kroc Camen, and the H5BP dev community and team.
  */
 
- 
+
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
@@ -138,12 +138,8 @@ h1, h2, h3, h4, h5, h6 {
 header {
     background: #59f;
     width:100%;
-    height: min-content;
     text-align: center;
     box-sizing: border-box;
-}
-header div{
-    height: min-content;
 }
 header > div:first-child {
     vertical-align: middle;
@@ -431,7 +427,7 @@ hr {
   clear: both;
 }
 
- 
+
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
@@ -449,7 +445,7 @@ hr {
     /* Style adjustments for high resolution devices */
 }
 
- 
+
 /* ==========================================================================
    Print styles.
    Inlined to avoid the additional HTTP request:
