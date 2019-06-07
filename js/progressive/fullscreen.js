@@ -39,7 +39,7 @@ class Fullscreen {
         }
     }
 
-    addOnFullscreenHandler(handler) {
+    addOnFullscreenHandler(handler/*callback(started: bool)*/) {
         this.fullscreenHandlers.push(handler);
     }
     removeOnFullscreenHandler(handler) {
