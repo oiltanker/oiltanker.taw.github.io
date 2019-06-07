@@ -1,4 +1,4 @@
-const cacheName = "AOE2GameQuerry_cache";
+const cacheName = "aoe2gq_cache";
 
 const filesToCache = [
     "css/main.css",
