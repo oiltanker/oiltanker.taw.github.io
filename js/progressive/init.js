@@ -27,8 +27,8 @@ function progressive_onLoad() {
             navigator.vibrate(200);
             prFunc.notify.notify(
                 "Entry '" + entry.name + "' is now "
-                + (action == FavAction.add ? "added" : "removed")
-                + " to your favorites."
+                + (action == FavAction.add ? "added to" : "removed from")
+                + " your favorites."
             );
         });
     }
